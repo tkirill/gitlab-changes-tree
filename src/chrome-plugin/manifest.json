@@ -11,7 +11,7 @@
     {
       "matches": ["*://gitlab.com/*merge_requests/*/diffs*"],
       "css": ["tree.css"],
-      "js": ["tree.js"]
+      "js": ["diffsPageDom.js", "observeChangedFiles.js", "main.js"]
     }
   ]
 }
