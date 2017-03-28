@@ -27,8 +27,39 @@
 
         this.findChild = function (text) {
             return children.find(function (x) {
-                return x.text === text;
+                return x.getText() === text;
             });
+        };
+
+        // Merge parent and single child.
+        this.collapse = function () {
+            while (children.length === 1) {
+                let singleChild = children[0];
+                text = `${text}/${singleChild.getText()}`;
+                url = singleChild.getUrl();
+                children = singleChild.getChildren();
+            }
+            children.forEach(x => x.collapse());
+        };
+
+        // Sort children ascending
+        //
+        // Sort only by name, don't take path length into account.
+        this.sort = function () {
+            children.sort((a, b) => a < b ? -1 : a > b ? 1 : 0);
+            children.forEach(x => x.sort());
+        };
+
+        this.getText = function () {
+            return text;
+        };
+
+        this.getUrl = function () {
+            return url;
+        };
+
+        this.getChildren = function () {
+            return children.slice();
         };
 
         this.toObject = function () {
@@ -47,6 +78,14 @@
             root.addChild(pathInfo);
         };
 
+        this.collapse = function () {
+            root.collapse();
+        };
+
+        this.sort = function () {
+            root.sort();
+        };
+
         this.toObject = function () {
             return root.toObject();
         }
@@ -62,6 +101,8 @@
                 url: x.url
             })
         });
+        tree.collapse();
+        tree.sort();
 
         return tree;
     }
