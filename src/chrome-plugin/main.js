@@ -1,8 +1,11 @@
 (function () {
-    var dom = parseDiffsPageDom();
-    var event = observeChangedFiles(dom);
+    let dom = parseDiffsPageDom();
+    let event = observeChangedFiles(dom);
     event.listen(function (eventArgs) {
-        var files = dom.parseChangedFiles(eventArgs.getChangedFilesBlock());
+        let files = dom.parseChangedFiles(eventArgs.getChangedFilesBlock());
         console.log(files);
+
+        let tree = buildTree(files);
+        console.log(tree.toObject());
     });
 })();
