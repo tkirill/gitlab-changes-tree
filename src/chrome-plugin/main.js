@@ -7,5 +7,7 @@
 
         let tree = buildTree(files);
         console.log(tree.toObject());
+
+        renderTree(tree, dom);
     });
 })();

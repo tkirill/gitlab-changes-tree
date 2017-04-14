@@ -63,11 +63,17 @@
         };
 
         this.toObject = function () {
-            return {
+            let result = {
                 text: text,
                 url: url,
                 children: children.map(x => x.toObject())
+            };
+            if (url) {
+                result.a_attr = {
+                    href: url
+                };
             }
+            return result;
         }
     }
 

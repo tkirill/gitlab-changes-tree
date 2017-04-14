@@ -10,8 +10,11 @@
   "content_scripts": [
     {
       "matches": ["*://gitlab.com/*merge_requests/*/diffs*"],
-      "css": ["tree.css"],
-      "js": ["diffsPageDom.js", "observeChangedFiles.js", "tree.js", "main.js"]
+      "css": ["themes/default/style.css"],
+      "js": ["jquery-3.2.1.min.js", "jstree.min.js", "diffsPageDom.js", "observeChangedFiles.js", "tree.js", "view.js", "main.js"]
     }
+  ],
+  "web_accessible_resources": [
+    "themes/default/*"
   ]
 }

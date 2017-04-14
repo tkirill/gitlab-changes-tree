@@ -27,12 +27,16 @@
             //
             // Gets data from `a` tags inside `div.file-stats`.
             parseChangedFiles: function (changedFilesBlock) {
-                var fileStatsDiv = changedFilesBlock.getElementsByClassName("file-stats")[0],
+                let fileStatsDiv = changedFilesBlock.getElementsByClassName("file-stats")[0],
                     anchors = htmlCollectionToArray(fileStatsDiv.getElementsByTagName("a"));
 
                 return anchors.map(function (x) {
                     return {url: x.href, file: x.text.trim()};
                 });
+            },
+
+            getSidebar: function () {
+                return document.getElementsByClassName('participants')[0].parentNode;
             }
         }
     }
