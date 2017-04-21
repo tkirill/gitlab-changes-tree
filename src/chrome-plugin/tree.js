@@ -93,7 +93,9 @@
         };
 
         this.toObject = function () {
-            return root.toObject();
+            let result = root.toObject();
+            result.state = {opened: true};
+            return result;
         }
     }
     
