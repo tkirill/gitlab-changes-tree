@@ -1,17 +1,17 @@
 ﻿{
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
+  "name": "GitLab changes tree",
+  "description": "This extension shows a tree of changed files in GitLab for easier navigation during review",
+  "version": "0.1",
   "permissions": [
     "activeTab"
   ],
   "content_scripts": [
     {
       "matches": ["*://gitlab.com/*merge_requests/*/diffs*"],
-      "css": ["themes/default/style.css"],
-      "js": ["jquery-3.2.1.min.js", "jstree.min.js", "diffsPageDom.js", "observeChangedFiles.js", "tree.js", "view.js", "main.js"]
+      "css": ["themes/default/style.css", "tree.css"],
+      "js": ["lib/jquery-3.2.1.min.js", "lib/jstree.min.js", "diffsPageDom.js", "observeChangedFiles.js", "tree.js", "view.js", "main.js"]
     }
   ],
   "web_accessible_resources": [

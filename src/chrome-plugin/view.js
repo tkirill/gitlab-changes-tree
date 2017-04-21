@@ -4,9 +4,14 @@
 
         let jsTreeData = [tree.toObject()];
 
-        let $treeBlock = $('<div>').addClass('block').jstree({ 'core' : {
-            'data' : jsTreeData
-        } }).on('activate_node.jstree', (e, data) => {
+        let $treeBlock = $('<div>').addClass('block changed-files-tree-plugin').jstree({
+            'core': {
+                'data': jsTreeData,
+                themes: {
+                    icons: false
+                }
+            }
+        }).on('activate_node.jstree', (e, data) => {
             console.log(data.node);
             window.location = data.node.a_attr.href;
         });
