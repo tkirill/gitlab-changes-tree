@@ -5,15 +5,20 @@
   "description": "This extension shows a tree of changed files in GitLab for easier navigation during review",
   "version": "0.1",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "content_scripts": [
     {
-      "matches": ["*://gitlab.com/*merge_requests/*"],
+      "matches": ["*://gitlab.com/*merge_requests/*", "*://git.skbkontur.ru/*merge_requests/*"],
       "css": ["themes/default/style.css", "tree.css"],
       "js": ["lib/jquery-3.2.1.min.js", "lib/jstree.min.js", "diffsPageDom.js", "observeChangedFiles.js", "tree.js", "view.js", "main.js"]
     }
   ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "web_accessible_resources": [
     "themes/default/*"
   ]
